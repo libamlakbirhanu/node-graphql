@@ -15,19 +15,15 @@ app.use(
     graphiql: true,
     formatError(err) {
       if (!err.originalError) {
-        return err
+        return err;
       }
 
-      return err.originalError
-    }
+      return err.originalError;
+    },
   })
 );
 
-mongoose
-  .connect(
-    "mongodb+srv://libamlak:outcasted9044@graphql.hhmby.mongodb.net/?retryWrites=true&w=majority"
-  )
-  .then(() => {
-    console.log("database connected successfully");
-    app.listen(PORT, () => console.log("server started successfully"));
-  });
+mongoose.connect(process.env.mongo_uri).then(() => {
+  console.log("database connected successfully");
+  app.listen(PORT, () => console.log("server started successfully"));
+});
