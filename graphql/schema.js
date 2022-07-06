@@ -17,6 +17,7 @@ module.exports = buildSchema(`
 
   type RootQuery {
     hello: String
+    users: [User]
   }
 
   type RootMutation {

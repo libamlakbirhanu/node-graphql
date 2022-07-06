@@ -25,4 +25,9 @@ module.exports = {
   hello() {
     return "hello world";
   },
+
+  users: async function (args, req) {
+    const users = await User.find();
+    return users;
+  },
 };
