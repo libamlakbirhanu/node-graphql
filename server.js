@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const { graphqlHTTP } = require("express-graphql");
 
 const graphqlSchema = require("./graphql/schema");
@@ -10,6 +11,7 @@ require("dotenv").config({ path: __dirname + "/.env" });
 const app = express();
 const PORT = 5000;
 
+app.use(cors());
 app.use(
   "/graphql",
   graphqlHTTP({

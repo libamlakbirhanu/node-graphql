@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
+const products = require("../utils/Product");
 
 module.exports = {
   createUser: async function (args, req) {
@@ -29,5 +30,14 @@ module.exports = {
   users: async function (args, req) {
     const users = await User.find();
     return users;
+  },
+
+  products: function (args, req) {
+    const selectedProducts = products.slice(
+      args.productInput.offset,
+      args.productInput.first + args.productInput.offset
+    );
+
+    return selectedProducts;
   },
 };
